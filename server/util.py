@@ -6,3 +6,8 @@ def get_data() -> dict:
         data = json.load(json_data)
 
         return data
+
+
+def save_data(data: dict):
+    with open("events.json", "w") as json_data:
+        json.dump(data, json_data)
