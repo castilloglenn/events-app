@@ -7,8 +7,13 @@ app = Flask(__name__)
 @app.route("/create-event", methods=["POST"])
 def create_event():
     data = request.json
-    result = create(data)
-    return jsonify({"message": result})
+    event_details = {
+        "name": data["name"],
+        "start": data["start"],
+        "end": data["end"],
+    }
+    create(data=event_details)
+    return jsonify({"message": "success"})
 
 
 @app.route("/list-events", methods=["GET"])
@@ -20,14 +25,14 @@ def list_events():
 @app.route("/update-event/<event_id>", methods=["PUT"])
 def update_event(event_id):
     data = request.json
-    result = update(event_id, data)
-    return jsonify({"message": result})
+    update(event_id, data)
+    return jsonify({"message": "success"})
 
 
 @app.route("/delete-event/<event_id>", methods=["DELETE"])
 def delete_event(event_id):
-    result = delete(event_id)
-    return jsonify({"message": result})
+    delete(event_id)
+    return jsonify({"message": "success"})
 
 
 if __name__ == "__main__":
