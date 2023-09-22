@@ -17,5 +17,12 @@ def list_events():
     return jsonify(events)
 
 
+@app.route("/update-event/<int:event_id>", methods=["PUT"])
+def update_event(event_id):
+    data = request.json
+    result = update(event_id, data)
+    return jsonify({"message": result})
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
