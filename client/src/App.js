@@ -5,7 +5,7 @@ function App() {
     // const [data, setData] = useState([{}])
 
     // useEffect(() => {
-    //     fetch("/fetchAll")
+    //     fetch("/list-events")
     //         .then(response => response.json())
     //         .then(
     //             data => {
