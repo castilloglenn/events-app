@@ -1,11 +1,12 @@
+from database import read
 from flask import Flask
 
 app = Flask(__name__)
 
 
-@app.route("/members")
+@app.route("/fetchAll")
 def members():
-    return {"members": ["Member1", "Member2", "Member3"]}
+    return read()
 
 
 if __name__ == "__main__":
