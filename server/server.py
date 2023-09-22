@@ -24,5 +24,11 @@ def update_event(event_id):
     return jsonify({"message": result})
 
 
+@app.route("/delete-event/<int:event_id>", methods=["DELETE"])
+def delete_event(event_id):
+    result = delete(event_id)
+    return jsonify({"message": result})
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
