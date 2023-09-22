@@ -1,13 +1,30 @@
 import json
+from datetime import datetime
+
+
+def serialize_datetime(obj):
+    if isinstance(obj, datetime):
+        return obj.isoformat()
+    return obj
+
+
+def deserialize_datetime(data):
+    if "start" in data:
+        data["start"] = datetime.fromisoformat(data["start"])
+    if "end" in data:
+        data["end"] = datetime.fromisoformat(data["end"])
+    return data
 
 
 def get_data() -> dict:
-    with open("events.json", "r") as json_data:
-        data = json.load(json_data)
-
-        return data
+    try:
+        with open("events.json", "r") as json_data:
+            data = json.load(json_data, object_hook=deserialize_datetime)
+            return data
+    except FileNotFoundError:
+        return {}
 
 
 def save_data(data: dict):
     with open("events.json", "w") as json_data:
-        json.dump(data, json_data)
+        json.dump(data, json_data, default=serialize_datetime)
