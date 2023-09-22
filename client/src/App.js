@@ -16,8 +16,8 @@ function App() {
     }, [])
 
     return (
-        <div>
-            
+        <div >
+            {data}
         </div>
     )
 }
