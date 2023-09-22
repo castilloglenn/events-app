@@ -17,14 +17,14 @@ def list_events():
     return jsonify(events)
 
 
-@app.route("/update-event/<int:event_id>", methods=["PUT"])
+@app.route("/update-event/<event_id>", methods=["PUT"])
 def update_event(event_id):
     data = request.json
     result = update(event_id, data)
     return jsonify({"message": result})
 
 
-@app.route("/delete-event/<int:event_id>", methods=["DELETE"])
+@app.route("/delete-event/<event_id>", methods=["DELETE"])
 def delete_event(event_id):
     result = delete(event_id)
     return jsonify({"message": result})
