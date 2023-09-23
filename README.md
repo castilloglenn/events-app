@@ -13,9 +13,10 @@
 8. Install the dependencies by typing "pip install -r requirements.txt" and press Enter
 9. Start the backend server by typing "python server.py" and press Enter
 10. On the second terminal, type "cd client" and press Enter
-11. Type "npm start" to boot up React's frontend server
-12. The backend listens to port 8080 whilst the frontend will create a new tab automatically in the port 3000.
-13. Enjoy!
+11. Download and install npm dependencies by typing "npm install" and press Enter
+12. Type "npm start" to boot up React's frontend server
+13. The backend listens to port 8080 whilst the frontend will create a new tab automatically in the port 3000.
+14. Enjoy!
 
 
 Homepage:
