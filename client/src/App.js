@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import EventForm from './components/EventForm'
 import EventItem from './components/EventItem'
+import Modal from './components/Modal';
 
 function App() {
+
+    const [modalVisibility, setModalVisibility] = useState(false);
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalMessage, setModalMessage] = useState("");
+
+    const showModal = (response) => {
+        setModalTitle(response.title);
+        setModalMessage(response.message);
+        setModalVisibility(true);
+    }
 
     const [events, setEvents] = useState([]);
 
@@ -43,8 +54,8 @@ function App() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 updateList();
+                showModal(data);
             })
             .catch((error) => {
                 console.error("Error updating event:", error);
@@ -57,8 +68,8 @@ function App() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 updateList();
+                showModal(data);
             })
             .catch((error) => {
                 console.error("Error deleting event:", error);
@@ -68,7 +79,10 @@ function App() {
     return (
         <div className='App'>
             <h1 className='title'>Create New Event</h1>
-            <EventForm updateList={updateList}/>
+            <EventForm 
+                showModal={showModal}
+                updateList={updateList}
+            />
             <h1 className='title'>List of Events</h1>
             {events.map((event) => (
                 <EventItem
@@ -81,6 +95,12 @@ function App() {
                     onEdit={handleEdit}
                 />
             ))}
+            <Modal
+              isOpen={modalVisibility}
+              onClose={() => setModalVisibility(false)}
+              title={modalTitle}
+              message={modalMessage}
+            />
         </div>
     )
 }
