@@ -83,7 +83,7 @@ function App() {
                 updateList={updateList}
             />
 
-            <div className="container">
+            <div className="container eventList">
                 <h2>List of Events</h2>
             {
                 events.length === 0 

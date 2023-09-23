@@ -63,6 +63,10 @@ button {
   margin-bottom: 2.5vh;
 }
 
+.eventList {
+  margin-bottom: 0;
+}
+
 .eventItem {
   padding: 1rem;
   border: 1px solid black;
