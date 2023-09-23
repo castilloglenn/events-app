@@ -1,2 +1,5 @@
 /venv
 *__pycache__*
+
+# Avoid pushing new data
+events.json
