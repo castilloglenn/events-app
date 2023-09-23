@@ -7,12 +7,7 @@ app = Flask(__name__)
 @app.route("/create-event", methods=["POST"])
 def create_event():
     data = request.json
-    event_details = {
-        "name": data["name"],
-        "start": data["start"],
-        "end": data["end"],
-    }
-    create(data=event_details)
+    create(data=data)
     return jsonify({"message": "success"})
 
 
