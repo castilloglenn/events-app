@@ -31,7 +31,9 @@ def save_data(data: dict):
         json.dump(data, json_data, default=serialize_datetime)
 
 
-def validate_event(db: dict[str, dict[str, Any]], event: dict[str, Any]) -> str:
+def validate_event(
+    db: dict[str, dict[str, Any]], event: dict[str, Any], update_id: str = None
+) -> str:
     new_event = deserialize_datetime(event)
     new_start: datetime = new_event["start"]
     new_end: datetime = new_event["end"]
@@ -50,7 +52,11 @@ def validate_event(db: dict[str, dict[str, Any]], event: dict[str, Any]) -> str:
     ):
         return "Events to be set are only between 8AM-8PM in the evening. No events allowed outside these hours."
 
-    for evt in db.values():
+    for i, evt in db.items():
+        if update_id is not None:
+            if update_id == i:
+                continue
+
         evt_start = evt["start"]
         evt_end = evt["end"]
 

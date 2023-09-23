@@ -38,13 +38,19 @@ def update(id: EventID, data: EventDetails) -> None:
         "start": data["start"],
         "end": data["end"],
     }
-    db[id] = updated_data
-    save_data(db)
 
-    return {
-        "title": "Success!",
-        "message": f"Event '{updated_data['name']}' has been updated!",
-    }
+    response = validate_event(db=db, event=updated_data, update_id=id)
+
+    if not response:
+        db[id] = updated_data
+        save_data(db)
+
+        return {
+            "title": "Success!",
+            "message": f"Event '{updated_data['name']}' has been updated!",
+        }
+    else:
+        return {"title": "Failed.", "message": response}
 
 
 def delete(id: EventID) -> None:
