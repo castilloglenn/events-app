@@ -78,13 +78,13 @@ function App() {
 
     return (
         <div className='App'>
-            <h1 className='title'>Create New Event</h1>
             <EventForm 
                 showModal={showModal}
                 updateList={updateList}
             />
 
-            <h1 className='title'>List of Events</h1>
+            <div className="container">
+                <h2>List of Events</h2>
             {
                 events.length === 0 
                 ? 
@@ -104,6 +104,7 @@ function App() {
                     />
                 ))
             }
+            </div>
 
             <Modal
               isOpen={modalVisibility}

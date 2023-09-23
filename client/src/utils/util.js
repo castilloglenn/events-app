@@ -15,9 +15,10 @@ function formatDateNice(dateTimeString) {
     const formattedDate = date.toLocaleDateString(undefined, optionsDate);
 
     const hours = date.getUTCHours();
+    const hset = hours > 12 ? hours - 12 : hours
     const minutes = String(date.getUTCMinutes()).padStart(2, "0");
     const ampm = hours >= 12 ? "PM" : "AM";
-    const formattedTime = `${hours % 12}:${minutes} ${ampm}`;
+    const formattedTime = `${hset}:${minutes} ${ampm}`;
 
     return `${formattedTime}, ${formattedDate}`;
 }

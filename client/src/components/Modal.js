@@ -8,7 +8,11 @@ function Modal({ isOpen, onClose, title, message }) {
         <div className="modal-content">
             <h2>{title}</h2>
             <p>{message}</p>
-            <button onClick={onClose}>Close</button>
+            <hr />
+            <center>
+                <button onClick={onClose}>Close</button>
+            </center>
+            
         </div>
         </div>
     );

@@ -33,7 +33,7 @@ function EventForm({ showModal, updateList }) {
     
                     updateList();
                 }
-                
+
                 showModal(data);
             } else {
                 console.error("Error creating event");
@@ -45,6 +45,11 @@ function EventForm({ showModal, updateList }) {
 
     return (
         <div className="container">
+            <h1>Events Planner App</h1>
+            <p className="author">by Allen Glenn E. Castillo</p>
+            <hr />
+            <h2>Schedule New Event</h2>
+
             <form onSubmit={handleSubmit}>
                 <div>
                 <label>Event Name: </label>

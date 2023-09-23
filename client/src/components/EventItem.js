@@ -24,7 +24,7 @@ function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
     };
   
     return (
-        <div className="container" id={id}>
+        <div className="eventItem" id={id}>
             {isEditing ? (
             <div>
                 <div>
@@ -59,7 +59,7 @@ function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
             </div>
             ) : (
             <div>
-                <p>{name}</p>
+                <p className="eventTitle">{name}</p>
                 <p>Start: {formatDateNice(startTime)}</p>
                 <p>End: {formatDateNice(endTime)}</p>
                 <button onClick={handleEditClick}>Edit</button>
