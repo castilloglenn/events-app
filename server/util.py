@@ -61,10 +61,10 @@ def validate_event(
         evt_end = evt["end"]
 
         if (
-            new_start >= evt_start
-            and new_start <= evt_end
-            or new_end >= evt_start
-            and new_end <= evt_end
+            (new_start >= evt_start and new_start <= evt_end)
+            or (new_end >= evt_start and new_end <= evt_end)
+            or (evt_start >= new_start and evt_start <= new_end)
+            or (evt_end >= new_start and evt_end <= new_end)
         ):
             evt_name = evt["name"]
             return f"You are overlapping with the other event: {evt_name}"
