@@ -98,8 +98,11 @@ label {
 
 input {
   height: 1.5rem;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   margin-bottom: 0.5rem;
+  padding: 5px 10px;
+  font-size: 0.9rem;
 }
 
 button {
