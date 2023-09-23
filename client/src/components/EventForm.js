@@ -26,12 +26,14 @@ function EventForm({ showModal, updateList }) {
             if (response.ok) {
                 const data = await response.json();
                 
-                setEventName("");
-                setEventStart("");
-                setEventEnd("");
-
-                updateList();
-                showModal(data);
+                if (data.title === "Success!") {
+                    setEventName("");
+                    setEventStart("");
+                    setEventEnd("");
+    
+                    updateList();
+                    showModal(data);
+                }
             } else {
                 console.error("Error creating event");
             }
