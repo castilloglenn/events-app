@@ -60,6 +60,7 @@ function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
             ) : (
             <div>
                 <p className="eventTitle">{name}</p>
+                <p className="separator"><hr /></p>
                 <p>Start: {formatDateNice(startTime)}</p>
                 <p>End: {formatDateNice(endTime)}</p>
                 <button onClick={handleEditClick}>Edit</button>

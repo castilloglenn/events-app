@@ -15,6 +15,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  height: 1.5rem;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 0.5rem;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+button {
+  padding: 5px 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
 .App {
   background: #0084ff;
   width: 500px;
@@ -83,32 +113,6 @@ body {
   margin-bottom: 1rem;
 }
 
-h1 {
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
+.separator {
   margin: 1rem 0;
-}
-
-label {
-  font-weight: 500;
-}
-
-input {
-  height: 1.5rem;
-  width: 95%;
-  margin: auto;
-  margin-bottom: 0.5rem;
-  padding: 5px 10px;
-  font-size: 0.9rem;
-}
-
-button {
-  padding: 5px 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  font-weight: 800;
 }
