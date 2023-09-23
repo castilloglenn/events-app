@@ -1,4 +1,5 @@
 import React from 'react'
+import EventForm from './components/EventForm'
 
 function App() {
 
@@ -18,12 +19,7 @@ function App() {
     return (
         <div className='App'>
             <h1 className='title'>Create New Event</h1>
-            <div className="container createEvent">
-                <p>Event Name: <input type="text" /></p>
-                <p>Start: <input type="datetime-local" name="" id="" /></p>
-                <p>End: <input type="datetime-local" name="" id="" /></p>
-                <button>Create Event</button>
-            </div>
+            <EventForm />
             <h1 className='title'>List of Events</h1>
             <div className='container' id='0'>
                 <p>Sample event #1: Initial Interview</p>
