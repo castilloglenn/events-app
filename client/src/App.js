@@ -89,7 +89,7 @@ function App() {
                 events.length === 0 
                 ? 
                 <div className="container">
-                    <p>There are no listed events.</p>
+                    <center>There are no listed events.</center>
                 </div>
                 :
                 events.map((event) => (
