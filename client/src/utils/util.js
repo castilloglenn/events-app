@@ -1,13 +1,26 @@
-
-
-function formatDate(dateTimeString) {
+function formatDateISO(dateTimeString) {
     const date = new Date(dateTimeString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
+    const utcYear = date.getUTCFullYear();
+    const utcMonth = String(date.getUTCMonth() + 1).padStart(2, "0");
+    const utcDay = String(date.getUTCDate()).padStart(2, "0");
+    const utcHours = String(date.getUTCHours()).padStart(2, "0");
+    const utcMinutes = String(date.getUTCMinutes()).padStart(2, "0");
+    return `${utcYear}-${utcMonth}-${utcDay}T${utcHours}:${utcMinutes}`;
 }
 
-export default formatDate;
+function formatDateNice(dateTimeString) {
+    const date = new Date(dateTimeString);
+    
+    const optionsDate = { year: "numeric", month: "long", day: "numeric", timeZone: 'UTC' };
+    const formattedDate = date.toLocaleDateString(undefined, optionsDate);
+
+    const hours = date.getUTCHours();
+    const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedTime = `${hours % 12}:${minutes} ${ampm}`;
+
+    return `${formattedTime}, ${formattedDate}`;
+}
+
+
+export { formatDateISO, formatDateNice };

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import formatDate from "../utils/util";
+import {formatDateISO, formatDateNice} from "../utils/util";
 
 function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedName, setEditedName] = useState(name);
-    const [editedStartTime, setEditedStartTime] = useState(formatDate(startTime));
-    const [editedEndTime, setEditedEndTime] = useState(formatDate(endTime));
+    const [editedStartTime, setEditedStartTime] = useState(formatDateISO(startTime));
+    const [editedEndTime, setEditedEndTime] = useState(formatDateISO(endTime));
   
     const handleEditClick = () => {
         setIsEditing(true);
@@ -19,8 +19,8 @@ function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
     const handleCancelClick = () => {
         setIsEditing(false);
         setEditedName(name);
-        setEditedStartTime(formatDate(startTime));
-        setEditedEndTime(formatDate(endTime));
+        setEditedStartTime(formatDateISO(startTime));
+        setEditedEndTime(formatDateISO(endTime));
     };
   
     return (
@@ -60,8 +60,8 @@ function EventItem({ id, name, startTime, endTime, onDelete, onEdit }) {
             ) : (
             <div>
                 <p>{name}</p>
-                <p>Start: {formatDate(startTime)}</p>
-                <p>End: {formatDate(endTime)}</p>
+                <p>Start: {formatDateNice(startTime)}</p>
+                <p>End: {formatDateNice(endTime)}</p>
                 <button onClick={handleEditClick}>Edit</button>
                 <button onClick={() => onDelete(id)}>Delete</button>
             </div>
