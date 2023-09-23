@@ -1,44 +1,55 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import EventForm from './components/EventForm'
+import EventItem from './components/EventItem'
 
 function App() {
 
-    // const [data, setData] = useState([{}])
+    const [events, setEvents] = useState([]);
 
-    // useEffect(() => {
-    //     fetch("/list-events")
-    //         .then(response => response.json())
-    //         .then(
-    //             data => {
-    //                 setData(data)
-    //                 console.log(data)
-    //             }
-    //         )
-    // }, [])
+    const updateList = () => {
+        fetch("/list-events")
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                const eventsArray = Object.entries(data).map(([id, event]) => ({
+                id,
+                ...event,
+                }));
+        
+                setEvents(eventsArray);
+            })
+            .catch((error) => {
+                console.error("Error fetching events:", error);
+            });
+    }
+    
+    useEffect(updateList, []);
+
+    const handleEdit = (eventId) => {
+        
+    };
+
+    const handleDelete = (eventId) => {
+        
+    };
 
     return (
         <div className='App'>
             <h1 className='title'>Create New Event</h1>
-            <EventForm />
+            <EventForm updateList={updateList}/>
             <h1 className='title'>List of Events</h1>
-            <div className='container' id='0'>
-                <p>Sample event #1: Initial Interview</p>
-                <p>Date: 1:00PM-2:00PM, September 22, 2023</p>
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            <div className='container' id='1'>
-                <p>Sample event #2: Technical Interview</p>
-                <p>Date: 2:00PM-3:00PM, September 22, 2023</p>
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            <div className='container' id='2'>
-                <p>Sample event #3: Skills Test</p>
-                <p>Date: 2:00PM-3:00PM, September 22, 2023</p>
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
+            {events.map((event) => (
+                <EventItem
+                    key={event.id}
+                    id={event.id}
+                    name={event.name}
+                    startTime={event.start}
+                    endTime={event.end}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                />
+            ))}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EventForm() {
+function EventForm({ updateList }) {
     const [eventName, setEventName] = useState("");
     const [eventStart, setEventStart] = useState("");
     const [eventEnd, setEventEnd] = useState("");
@@ -25,6 +25,8 @@ function EventForm() {
 
             if (response.ok) {
                 console.log("Event created successfully");
+
+                updateList()
             } else {
                 console.error("Error creating event");
             }
