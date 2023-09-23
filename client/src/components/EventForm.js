@@ -38,36 +38,36 @@ function EventForm({ showModal, updateList }) {
 
     return (
         <div className="container">
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label>Event Name: </label>
-            <input
-                type="text"
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-                required
-            />
-            </div>
-            <div>
-            <label>Start: </label>
-            <input
-                type="datetime-local"
-                value={eventStart}
-                onChange={(e) => setEventStart(e.target.value)}
-                required
-            />
-            </div>
-            <div>
-            <label>End: </label>
-            <input
-                type="datetime-local"
-                value={eventEnd}
-                onChange={(e) => setEventEnd(e.target.value)}
-                required
-            />
-            </div>
-            <button type="submit">Create Event</button>
-        </form>
+            <form onSubmit={handleSubmit}>
+                <div>
+                <label>Event Name: </label>
+                <input
+                    type="text"
+                    value={eventName}
+                    onChange={(e) => setEventName(e.target.value)}
+                    required
+                />
+                </div>
+                <div>
+                <label>Start: </label>
+                <input
+                    type="datetime-local"
+                    value={eventStart}
+                    onChange={(e) => setEventStart(e.target.value)}
+                    required
+                />
+                </div>
+                <div>
+                <label>End: </label>
+                <input
+                    type="datetime-local"
+                    value={eventEnd}
+                    onChange={(e) => setEventEnd(e.target.value)}
+                    required
+                />
+                </div>
+                <button type="submit">Create Event</button>
+            </form>
         </div>
     );
 }
