@@ -48,7 +48,7 @@ function EventForm({ updateList }) {
             />
             </div>
             <div>
-            <label>Start Date: </label>
+            <label>Start: </label>
             <input
                 type="datetime-local"
                 value={eventStart}
@@ -57,7 +57,7 @@ function EventForm({ updateList }) {
             />
             </div>
             <div>
-            <label>End Date: </label>
+            <label>End: </label>
             <input
                 type="datetime-local"
                 value={eventEnd}
