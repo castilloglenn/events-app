@@ -33,4 +33,6 @@ def update(id: EventID, data: EventDetails) -> None:
 
 
 def delete(id: EventID) -> None:
-    ...
+    db = get_data()
+    del db[id]
+    save_data(db)
