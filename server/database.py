@@ -22,7 +22,14 @@ def read() -> dict:
 
 
 def update(id: EventID, data: EventDetails) -> None:
-    ...
+    db = get_data()
+    udpated_data = {
+        "name": data["name"],
+        "start": data["start"],
+        "end": data["end"],
+    }
+    db[id] = udpated_data
+    save_data(db)
 
 
 def delete(id: EventID) -> None:
