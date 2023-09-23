@@ -1,7 +1,7 @@
 from time import time
 
 from typed import EventDetails, EventID
-from util import get_data, save_data
+from util import get_data, save_data, validate_event
 
 
 def create(data: EventDetails) -> None:
@@ -12,14 +12,19 @@ def create(data: EventDetails) -> None:
         "end": data["end"],
     }
 
-    time_id = str(int(time()))
-    db[time_id] = new_data
-    save_data(db)
+    response = validate_event(db=db, event=new_data)
 
-    return {
-        "title": "Success!",
-        "message": f"Event '{new_data['name']}' has been created!",
-    }
+    if not response:
+        time_id = str(int(time()))
+        db[time_id] = new_data
+        save_data(db)
+
+        return {
+            "title": "Success!",
+            "message": f"Event '{new_data['name']}' has been created!",
+        }
+    else:
+        return {"title": "Failed.", "message": response}
 
 
 def read() -> dict:

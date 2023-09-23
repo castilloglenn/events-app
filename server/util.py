@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from typing import Any
 
 
 def serialize_datetime(obj):
@@ -28,3 +29,7 @@ def get_data() -> dict:
 def save_data(data: dict):
     with open("events.json", "w") as json_data:
         json.dump(data, json_data, default=serialize_datetime)
+
+
+def validate_event(db: dict[str, dict[str, Any]], event: dict[str, Any]) -> str:
+    return "Testing testing"

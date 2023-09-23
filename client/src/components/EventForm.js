@@ -32,8 +32,9 @@ function EventForm({ showModal, updateList }) {
                     setEventEnd("");
     
                     updateList();
-                    showModal(data);
                 }
+                
+                showModal(data);
             } else {
                 console.error("Error creating event");
             }
