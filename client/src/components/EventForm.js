@@ -25,6 +25,10 @@ function EventForm({ showModal, updateList }) {
 
             if (response.ok) {
                 const data = await response.json();
+                
+                setEventName("");
+                setEventStart("");
+                setEventEnd("");
 
                 updateList();
                 showModal(data);
