@@ -83,6 +83,7 @@ function App() {
                 showModal={showModal}
                 updateList={updateList}
             />
+
             <h1 className='title'>List of Events</h1>
             {events.map((event) => (
                 <EventItem
@@ -95,6 +96,7 @@ function App() {
                     onEdit={handleEdit}
                 />
             ))}
+            
             <Modal
               isOpen={modalVisibility}
               onClose={() => setModalVisibility(false)}
