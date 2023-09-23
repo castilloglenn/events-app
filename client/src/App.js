@@ -52,7 +52,17 @@ function App() {
     };
 
     const handleDelete = (eventId) => {
-        
+        fetch("/delete-event/" + eventId, {
+            method: "DELETE"
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                updateList();
+            })
+            .catch((error) => {
+                console.error("Error deleting event:", error);
+            });
     };
 
     return (
