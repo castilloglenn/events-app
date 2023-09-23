@@ -85,18 +85,26 @@ function App() {
             />
 
             <h1 className='title'>List of Events</h1>
-            {events.map((event) => (
-                <EventItem
-                    key={event.id}
-                    id={event.id}
-                    name={event.name}
-                    startTime={event.start}
-                    endTime={event.end}
-                    onDelete={handleDelete}
-                    onEdit={handleEdit}
-                />
-            ))}
-            
+            {
+                events.length === 0 
+                ? 
+                <div className="container">
+                    <p>There are no listed events.</p>
+                </div>
+                :
+                events.map((event) => (
+                    <EventItem
+                        key={event.id}
+                        id={event.id}
+                        name={event.name}
+                        startTime={event.start}
+                        endTime={event.end}
+                        onDelete={handleDelete}
+                        onEdit={handleEdit}
+                    />
+                ))
+            }
+
             <Modal
               isOpen={modalVisibility}
               onClose={() => setModalVisibility(false)}
