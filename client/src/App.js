@@ -26,8 +26,29 @@ function App() {
     
     useEffect(updateList, []);
 
-    const handleEdit = (eventId) => {
-        
+    const handleEdit = (eventId, editedName, editedStartTime, editedEndTime) => {
+        const updatedEventData = {
+          id: eventId,
+          name: editedName,
+          start: editedStartTime,
+          end: editedEndTime,
+        };
+
+        fetch("/update-event/" + eventId, {
+            method: "PUT",
+            body: JSON.stringify(updatedEventData),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                updateList();
+            })
+            .catch((error) => {
+                console.error("Error updating event:", error);
+            });
     };
 
     const handleDelete = (eventId) => {
